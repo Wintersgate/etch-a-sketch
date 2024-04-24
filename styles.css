@@ -16,3 +16,7 @@ body {
     min-width: 20px;
     /*border: 1px solid black;*/
 }
+
+.color {
+    background-color: black;
+}

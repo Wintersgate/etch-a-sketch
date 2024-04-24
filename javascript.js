@@ -5,4 +5,9 @@ for (i = 0; i < 256; i++) {
     content.classList.add('content');
 
     container.appendChild(content);
+
+    content.addEventListener("mouseover", (event) => {
+        content.classList.add('color');
+    });
 }
+
