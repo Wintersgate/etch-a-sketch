@@ -4,6 +4,30 @@ body {
    flex-direction: column;
 }
 
+#content {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    font-size: 24px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #555555;
+    color: white;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    padding-right: 100px;
+    justify-content: space-around;
+}
+
 #container {
     display: flex;
     width: 520px;
