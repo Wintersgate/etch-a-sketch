@@ -1,5 +1,7 @@
 const container = document.querySelector('#container');
 const btn = document.querySelector('#btn');
+const rainbowBtn = document.querySelector('#rainbowBtn');
+const defaultBtn = document.querySelector('#defaultBtn');
 let defaultGridSize = 16;
 
 function createPad(gridSize) {
@@ -15,11 +17,10 @@ function createPad(gridSize) {
 
                 row.appendChild(content);
 
-                content.addEventListener("mouseover", (event) => {
-                    content.classList.add('color');
-                });
+                modeSelect(content);
             }
     }
+    editPad();
 }
 
 function editPad() {
@@ -34,5 +35,32 @@ function editPad() {
     });
 }
 
+function modeSelect(content) {
+    defaultBtn.addEventListener('click', () => {
+        defaultMode(content);
+    });
+    rainbowBtn.addEventListener('click', () => {
+        rainbowMode(content);
+    });
+}
+
+function defaultMode(content) {
+    content.addEventListener("mouseover", (event) => {
+        content.style.backgroundColor = "black";
+    });
+}
+
+function rainbowMode(content) {
+    content.addEventListener("mouseover", (event) => {
+        content.style.backgroundColor = `rgb(${randomizer()}, ${randomizer()}, ${randomizer()})`;
+    });
+}
+
+function randomizer() {
+    let randColor = Math.ceil(Math.random() * 255);
+    return randColor;
+}
+
+
+
 createPad(defaultGridSize);
-editPad();
