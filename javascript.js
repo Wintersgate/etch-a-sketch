@@ -1,25 +1,38 @@
 const container = document.querySelector('#container');
 const btn = document.querySelector('#btn');
-let grid = 16;
+let defaultGridSize = 16;
 
-function createPad() {
-    for (i = 0; i < grid * grid; i++) {
-        const content = document.createElement('div');
-        content.classList.add('content');
+function createPad(gridSize) {
+    for (i = 0; i < gridSize; i++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
 
-        container.appendChild(content);
+        container.appendChild(row);
 
-        content.addEventListener("mouseover", (event) => {
-            content.classList.add('color');
-        });
+            for (o = 0; o < gridSize; o++) {
+                const content = document.createElement('div');
+                content.classList.add('content');
+
+                row.appendChild(content);
+
+                content.addEventListener("mouseover", (event) => {
+                    content.classList.add('color');
+                });
+            }
     }
 }
 
 function editPad() {
+    let newSize;
     btn.addEventListener('click', () => {
-        grid = prompt('Enter number of rows ');
+        newSize = prompt('Enter number of rows ', '16');
+
+        while(container.firstChild) {
+            container.removeChild(container.firstChild)
+        }
+        createPad(newSize);
     });
 }
 
-createPad();
+createPad(defaultGridSize);
 editPad();
